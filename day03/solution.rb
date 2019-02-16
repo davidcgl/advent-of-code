@@ -3,7 +3,7 @@ require 'set'
 # Represents a bounding box.
 Box = Struct.new(:id, :x, :y, :width, :height) do
   def self.from_line(line)
-    if (match = /#(\d+) @ (\d+),(\d+): (\d+)x(\d+)/.match(line))
+    /#(\d+) @ (\d+),(\d+): (\d+)x(\d+)/.match(line) do |match|
       Box.new(*match.captures.map(&:to_i))
     end
   end
@@ -41,11 +41,11 @@ def box_without_overlap(boxes)
       count[box2] += 1
     end
   end
-  boxes.select { |box| count[box].zero? }
+  boxes.find { |box| count[box].zero? }
 end
 
 File.open(File.join(__dir__, 'input.txt')) do |file|
   boxes = file.each.map { |line| Box.from_line(line) }.compact
   puts "Squares with multiple claims: #{squares_with_multiple_claims(boxes)}"
-  puts "Box without overlap: #{box_without_overlap(boxes)}"
+  puts "Box without overlap: #{box_without_overlap(boxes).id}"
 end
