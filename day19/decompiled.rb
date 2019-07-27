@@ -47,5 +47,6 @@ loop do
   if a3 > a2
     break
   end
+
   a1 = 1
 end
