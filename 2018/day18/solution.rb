@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'set'
+require "set"
 
 class Landscape
   def initialize(path)
@@ -9,10 +9,10 @@ class Landscape
 
     lines = File.readlines(path).map(&:strip)
     lines.each_with_index do |line, y|
-      line.split('').each_with_index do |cell, x|
-        if cell == '#'
+      line.split("").each_with_index do |cell, x|
+        if cell == "#"
           @yards << [x, y]
-        elsif cell == '|'
+        elsif cell == "|"
           @trees << [x, y]
         end
       end
@@ -96,13 +96,13 @@ class Landscape
 
   def val(x, y)
     if @yards.include?([x, y]) && @trees.include?([x, y])
-      '$'
+      "$"
     elsif @yards.include?([x, y])
-      '#'
+      "#"
     elsif @trees.include?([x, y])
-      '|'
+      "|"
     else
-      '.'
+      "."
     end
   end
 
@@ -134,6 +134,6 @@ def solve(path, limit:)
   resources[digests[(limit - 1) % digests.size]]
 end
 
-path = File.join(__dir__, ARGV[0] || 'input.txt')
+path = File.join(__dir__, ARGV[0] || "input.txt")
 puts "part one: #{solve(path, limit: 10)}"
 puts "part two: #{solve(path, limit: 1_000_000_000)}"

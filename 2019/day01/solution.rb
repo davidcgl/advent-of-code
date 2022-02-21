@@ -18,6 +18,6 @@ def part_two(path)
   end
 end
 
-path = File.join(__dir__, ARGV[0] || 'input.txt')
+path = File.join(__dir__, ARGV[0] || "input.txt")
 puts "part one: #{part_one(path)}"
 puts "part two: #{part_two(path)}"

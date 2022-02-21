@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def plot(scores, e1, e2)
   out = scores.each_char.map { |c| " #{c} " }
   out[e1] = "(#{scores[e1]})"
@@ -6,7 +8,7 @@ def plot(scores, e1, e2)
 end
 
 def step
-  scores = '37'
+  scores = "37"
   e1 = 0
   e2 = 1
   loop do
@@ -40,6 +42,6 @@ def part_two(input)
   end
 end
 
-input = '260321'
+input = "260321"
 puts "part one: #{part_one(input)}"
 puts "part two: #{part_two(input)}"

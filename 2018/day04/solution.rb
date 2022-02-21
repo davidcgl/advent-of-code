@@ -1,9 +1,11 @@
-require 'time'
+# frozen_string_literal: true
+
+require "time"
 
 Event = Struct.new(:time, :type, :guard) do
   def self.from_line(line)
     /\[(.*)\] (.*)/.match(line) do |m|
-      event = Event.new(Time.parse(m[1].sub!('1518', '2018')))
+      event = Event.new(Time.parse(m[1].sub!("1518", "2018")))
       case m[2]
       when /wakes up/
         event.type = :awake
@@ -61,7 +63,7 @@ def generate_sleep_schedules(events)
   schedules.values
 end
 
-File.open(File.join(__dir__, 'input.txt')) do |file|
+File.open(File.join(__dir__, "input.txt")) do |file|
   events = file.each.map { |line| Event.from_line(line) }.sort_by(&:time)
   schedules = generate_sleep_schedules(events)
 

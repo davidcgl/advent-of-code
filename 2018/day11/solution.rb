@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 GRID_SIZE = 301
 SERIAL = 7347
 
@@ -34,9 +36,9 @@ def find_max_power(sum_table, square_size)
     next if max_x >= GRID_SIZE - 1 || max_y >= GRID_SIZE - 1
 
     power = sum_table[max_y][max_x] -
-            sum_table[max_y][x - 1] -
-            sum_table[y - 1][max_x] +
-            sum_table[y - 1][x - 1]
+      sum_table[max_y][x - 1] -
+      sum_table[y - 1][max_x] +
+      sum_table[y - 1][x - 1]
 
     if max_power < power
       max_power = power
@@ -54,9 +56,9 @@ def chronal_charge
   sum_table = Array.new(GRID_SIZE) { Array.new(GRID_SIZE, 0) }
   coordinates.each do |y, x|
     sum_table[y][x] = grid[y][x] +
-                      sum_table[y][x - 1] +
-                      sum_table[y - 1][x] -
-                      sum_table[y - 1][x - 1]
+      sum_table[y][x - 1] +
+      sum_table[y - 1][x] -
+      sum_table[y - 1][x - 1]
   end
 
   powers = (1...GRID_SIZE).each_with_object({}) do |square_size, hash|

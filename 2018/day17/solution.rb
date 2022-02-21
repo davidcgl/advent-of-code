@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'set'
+require "set"
 
 class Reservoir
   def initialize(clays, spring = [500, 0])
@@ -34,15 +34,15 @@ class Reservoir
       ((@min_x - 1)..(@max_x + 1)).each do |x|
         out <<
           if @spring == [x, y]
-            '+'
+            "+"
           elsif @still.include?([x, y])
-            '~'
+            "~"
           elsif @flows.include?([x, y])
-            '|'
+            "|"
           elsif @clays.include?([x, y])
-            '#'
+            "#"
           else
-            '.'
+            "."
           end
       end
       out << "\n"
@@ -97,12 +97,12 @@ class Reservoir
   end
 end
 
-filename = ARGV[0] || 'input.txt'
+filename = ARGV[0] || "input.txt"
 File.open(File.join(__dir__, filename)) do |file|
   clays = file.each_with_object(Set.new) do |line, set|
     a, b1, b2 = line.scan(/\d+/).map(&:to_i)
     (b1..b2).each do |b|
-      set << (line[0] == 'x' ? [a, b] : [b, a])
+      set << (line[0] == "x" ? [a, b] : [b, a])
     end
   end
 

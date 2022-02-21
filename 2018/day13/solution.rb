@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def plot(grid, carts)
-  out = ''
+  out = ""
   grid.keys.group_by(&:first).values.each_with_index do |cells, i|
     out += "#{i.to_s.rjust(3)} "
     out += cells.map { |pos| carts.dig(pos, :dir) || grid[pos] }.join
@@ -13,23 +13,23 @@ end
 def solve(grid, carts)
   # How to move in each direction.
   directions = {
-    '^' => [-1, 0],
-    'v' => [1, 0],
-    '<' => [0, -1],
-    '>' => [0, 1]
+    "^" => [-1, 0],
+    "v" => [1, 0],
+    "<" => [0, -1],
+    ">" => [0, 1],
   }
 
   # For each direction, how to turn left, straight, and right.
   crossroads = {
-    '^' => ['<', '^', '>'],
-    'v' => ['>', 'v', '<'],
-    '<' => ['v', '<', '^'],
-    '>' => ['^', '>', 'v']
+    "^" => ["<", "^", ">"],
+    "v" => [">", "v", "<"],
+    "<" => ["v", "<", "^"],
+    ">" => ["^", ">", "v"],
   }
 
   # How to turn at a forward slash (/) and backslash (\).
-  fturns = { '^' => '>', 'v' => '<', '<' => 'v', '>' => '^' }
-  bturns = { '^' => '<', 'v' => '>', '<' => '^', '>' => 'v' }
+  fturns = { "^" => ">", "v" => "<", "<" => "v", ">" => "^" }
+  bturns = { "^" => "<", "v" => ">", "<" => "^", ">" => "v" }
 
   # [y, x] coordinate of the first crash.
   first_crash = nil
@@ -45,17 +45,17 @@ def solve(grid, carts)
 
       track = grid[pos]
       case track
-      when '+'
+      when "+"
         cart[:dir] = crossroads[cart[:dir]][cart[:turn].next]
-      when '/'
+      when "/"
         cart[:dir] = fturns[cart[:dir]]
-      when '\\'
+      when "\\"
         cart[:dir] = bturns[cart[:dir]]
       end
 
       new_pos = [
         pos[0] + directions[cart[:dir]][0],
-        pos[1] + directions[cart[:dir]][1]
+        pos[1] + directions[cart[:dir]][1],
       ]
 
       # Will there be a crash?
@@ -74,16 +74,16 @@ def solve(grid, carts)
   puts "  last cart: #{last_cart.reverse}"
 end
 
-File.open(File.join(__dir__, 'input.txt')) do |file|
+File.open(File.join(__dir__, "input.txt")) do |file|
   carts = {}
   grid = {}
 
   file.readlines.each_with_index do |line, y|
     line.rstrip.each_char.with_index do |char, x|
       pos = [y, x]
-      if ['^', 'v', '<', '>'].include?(char)
+      if ["^", "v", "<", ">"].include?(char)
         carts[pos] = { dir: char, turn: [0, 1, 2].cycle }
-        grid[pos] = ['^', 'v'].include?(char) ? '|' : '-'
+        grid[pos] = ["^", "v"].include?(char) ? "|" : "-"
       else
         grid[pos] = char
       end

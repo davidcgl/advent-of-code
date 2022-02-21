@@ -1,4 +1,6 @@
-require 'set'
+# frozen_string_literal: true
+
+require "set"
 
 # Represents a bounding box.
 Box = Struct.new(:id, :x, :y, :width, :height) do
@@ -44,7 +46,7 @@ def box_without_overlap(boxes)
   boxes.find { |box| count[box].zero? }
 end
 
-File.open(File.join(__dir__, 'input.txt')) do |file|
+File.open(File.join(__dir__, "input.txt")) do |file|
   boxes = file.each.map { |line| Box.from_line(line) }.compact
   puts "Squares with multiple claims: #{squares_with_multiple_claims(boxes)}"
   puts "Box without overlap: #{box_without_overlap(boxes).id}"

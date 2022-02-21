@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RE_STATE = /(\d), (\d), (\d), (\d)/.freeze
-RE_INSTR = /(\d+) (\d) (\d) (\d)/.freeze
+RE_STATE = /(\d), (\d), (\d), (\d)/
+RE_INSTR = /(\d+) (\d) (\d) (\d)/
 
 OPCODES = {
   addr: ->(s, i) { s[i[3]] = s[i[1]] + s[i[2]] },
@@ -19,7 +19,7 @@ OPCODES = {
   gtrr: ->(s, i) { s[i[3]] = gt(s[i[1]], s[i[2]]) },
   eqir: ->(s, i) { s[i[3]] = eq(i[1], s[i[2]]) },
   eqri: ->(s, i) { s[i[3]] = eq(s[i[1]], i[2]) },
-  eqrr: ->(s, i) { s[i[3]] = eq(s[i[1]], s[i[2]]) }
+  eqrr: ->(s, i) { s[i[3]] = eq(s[i[1]], s[i[2]]) },
 }.freeze
 
 def gt(a, b)
@@ -45,7 +45,7 @@ def read_samples(path)
     {
       old: RE_STATE.match(slice[0]).captures.map(&:to_i),
       ins: RE_INSTR.match(slice[1]).captures.map(&:to_i),
-      new: RE_STATE.match(slice[2]).captures.map(&:to_i)
+      new: RE_STATE.match(slice[2]).captures.map(&:to_i),
     }
   end
 end
@@ -73,7 +73,7 @@ end
 def solve
   # For each sample <old state, instruction, new state>, find the set of opcodes
   # for which op(old state, instruction) == new state.
-  samples = read_samples(File.join(__dir__, 'samples.txt'))
+  samples = read_samples(File.join(__dir__, "samples.txt"))
   matches = samples.map { |sample| [sample[:ins][0], matching_ops(sample)] }
 
   # How many samples in your puzzle input behave like three or more opcodes?
@@ -93,7 +93,7 @@ def solve
   end
 
   # What value is contained in register 0 after executing the test program?
-  instructions = read_program(File.join(__dir__, 'program.txt'))
+  instructions = read_program(File.join(__dir__, "program.txt"))
   final_state = execute(instructions, num_to_ops)
   puts "part two: #{final_state[0]}"
 end

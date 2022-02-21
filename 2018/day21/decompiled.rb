@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A rough translation of program in input.txt
 
 a0 = 0

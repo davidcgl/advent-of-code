@@ -10,13 +10,13 @@ OPCODES = {
   borr: ->(r, i) { r[i[1]] | r[i[2]] },
   bori: ->(r, i) { r[i[1]] | i[2] },
   setr: ->(r, i) { r[i[1]] },
-  seti: ->(r, i) { i[1] },
+  seti: ->(_r, i) { i[1] },
   gtir: ->(r, i) { gt(i[1], r[i[2]]) },
   gtri: ->(r, i) { gt(r[i[1]], i[2]) },
   gtrr: ->(r, i) { gt(r[i[1]], r[i[2]]) },
   eqir: ->(r, i) { eq(i[1], r[i[2]]) },
   eqri: ->(r, i) { eq(r[i[1]], i[2]) },
-  eqrr: ->(r, i) { eq(r[i[1]], r[i[2]]) }
+  eqrr: ->(r, i) { eq(r[i[1]], r[i[2]]) },
 }.freeze
 
 def gt(a, b)
@@ -76,7 +76,7 @@ def solve
   #   Instruction 0 jumps to instruction 17
   #   Instructions 1-16 calculate the target's sum of factors
   #   Instructions 17-39 calculate the target and storer it in register 2
-  program = parse_program(File.join(__dir__, ARGV[0] || 'input.txt'))
+  program = parse_program(File.join(__dir__, ARGV[0] || "input.txt"))
 
   target = find_target(program, reg0: 0)
   puts "part one: #{factors(target).sum}"

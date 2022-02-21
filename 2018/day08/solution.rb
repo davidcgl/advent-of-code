@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def sum_metadata(tokens)
   return if tokens.empty?
 
@@ -18,7 +20,7 @@ def node_value(tokens)
   tokens.shift(num_metadata).sum { |i| child_values[i - 1] || 0 }
 end
 
-File.open(File.join(__dir__, 'input.txt')) do |file|
+File.open(File.join(__dir__, "input.txt")) do |file|
   tokens = file.readline.split.map(&:to_i)
   puts "Sum of all metadata entires: #{sum_metadata(tokens.dup)}"
   puts "Root value: #{node_value(tokens.dup)}"

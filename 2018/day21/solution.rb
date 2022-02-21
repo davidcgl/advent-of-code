@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'set'
+require "set"
 
 def solve(limit:)
   seen = Set.new
@@ -39,6 +39,6 @@ def solve(limit:)
 end
 
 limit = ARGV[0].to_i || 100_000
-first, last = solve(limit: limit)
+first, last = solve(limit:)
 puts "part one: #{first}"
 puts "part two: #{last}"

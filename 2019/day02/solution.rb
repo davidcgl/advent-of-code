@@ -22,14 +22,14 @@ def run(program)
 end
 
 def part_one(path)
-  program = File.read(path).split(',').map(&:to_i)
+  program = File.read(path).split(",").map(&:to_i)
   program[1] = 12
   program[2] = 2
   run(program)
 end
 
 def part_two(path)
-  source = File.read(path).split(',').map(&:to_i)
+  source = File.read(path).split(",").map(&:to_i)
   target = 19_690_720
 
   (0..99).each do |noun|
@@ -44,6 +44,6 @@ def part_two(path)
   nil
 end
 
-path = File.join(__dir__, ARGV[0] || 'input.txt')
+path = File.join(__dir__, ARGV[0] || "input.txt")
 puts "part one: #{part_one(path)}"
 puts "part two: #{part_two(path)}"

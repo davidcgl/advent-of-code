@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'algorithms'
-require 'set'
+require "algorithms"
+require "set"
 
 class Game
   def initialize(lines, elf_damage)
@@ -14,12 +14,12 @@ class Game
         pos = [y, x]
         char = lines[pos[0]][pos[1]]
         case char
-        when '.', '#'
+        when ".", "#"
           @grid[pos] = char
-        when 'E', 'G'
-          @grid[pos] = '.'
-          damage = char == 'E' ? elf_damage : 3
-          @units << Unit.new(type: char, pos: pos, damage: damage)
+        when "E", "G"
+          @grid[pos] = "."
+          damage = char == "E" ? elf_damage : 3
+          @units << Unit.new(type: char, pos:, damage:)
         end
       end
     end
@@ -72,7 +72,7 @@ class Game
   def find_adjacent_enemy(unit)
     neighbors(unit.pos)
       .map    { |p| @units.find { |u| u.pos == p } }
-      .select { |u| u && u.alive? && u.type != unit.type }
+      .select { |u| u&.alive? && u.type != unit.type }
       .min_by { |u| [u.hp, u.pos] }
   end
 
@@ -131,7 +131,7 @@ class Game
         out.last << (unit ? unit.type : @grid[pos])
       end
       row_units = @units.select { |u| u.pos[0] == y }.sort_by(&:pos)
-      out.last << '  ' << row_units.join(', ')
+      out.last << "  " << row_units.join(", ")
     end
     out.map(&:join).join("\n")
   end
@@ -152,7 +152,7 @@ class Game
   end
 
   def occupied?(pos)
-    @grid[pos] == '#' || @units.any? { |u| u.alive? && u.pos == pos }
+    @grid[pos] == "#" || @units.any? { |u| u.alive? && u.pos == pos }
   end
 end
 
@@ -201,7 +201,7 @@ def play(lines, elf_damage)
   puts "=============================================\n"
 end
 
-filename = ARGV[0] || 'input.txt'
+filename = ARGV[0] || "input.txt"
 File.open(File.join(__dir__, filename)) do |file|
   lines = file.readlines.map(&:rstrip)
   play(lines, 3)

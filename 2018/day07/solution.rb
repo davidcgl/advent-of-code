@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'pp'
-require 'pry'
-require 'set'
+require "pp"
+require "pry"
+require "set"
 
 def dep_graph(instructions)
-  steps = 'A'..'Z'
+  steps = "A".."Z"
   fdeps = steps.map { |s| [s, Set.new] }.to_h # A => [B] means A depends on B.
   rdeps = steps.map { |s| [s, Set.new] }.to_h # A => [B] means B depends on A.
 
@@ -21,7 +21,7 @@ end
 def get_sequence(instructions)
   blockers, dependents = dep_graph(instructions)
   queue = blockers.select { |_, d| d.empty? }.keys
-  sequence = ''
+  sequence = ""
   while queue.any?
     step = queue.delete(queue.min)
     sequence += step
@@ -62,7 +62,7 @@ def get_duration(instructions)
 end
 
 def make_job(step)
-  { step: step, remaining: 61 + (step.ord - 'A'.ord) }
+  { step:, remaining: 61 + (step.ord - "A".ord) }
 end
 
 def schedule_jobs(job_queue, job_progress, max_concurrent_jobs = 5)
@@ -72,7 +72,7 @@ def schedule_jobs(job_queue, job_progress, max_concurrent_jobs = 5)
   end
 end
 
-File.open(File.join(__dir__, 'input.txt')) do |file|
+File.open(File.join(__dir__, "input.txt")) do |file|
   instructions = file.readlines
 
   # In what order should the steps in your instructions be completed?

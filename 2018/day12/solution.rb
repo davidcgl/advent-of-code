@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'set'
+require "set"
 
 def mutate(state, patterns)
   new_state = Set.new
@@ -9,21 +9,21 @@ def mutate(state, patterns)
   (min..max).each do |center|
     min_pot = center - 2
     max_pot = center + 2
-    window = (min_pot..max_pot).map { |i| state.include?(i) ? '#' : '.' }.join
-    new_state << center if patterns[window] == '#'
+    window = (min_pot..max_pot).map { |i| state.include?(i) ? "#" : "." }.join
+    new_state << center if patterns[window] == "#"
   end
   new_state
 end
 
 def plot(state)
-  (state.min..state.max).map { |i| state.include?(i) ? '#' : '.' }.join
+  (state.min..state.max).map { |i| state.include?(i) ? "#" : "." }.join
 end
 
-File.open(File.join(__dir__, 'input.txt')) do |file|
+File.open(File.join(__dir__, "input.txt")) do |file|
   # Store indexes of plants that are alive.
   initial_state = file.readline.match(/initial state: (.*)/)[1]
-  initial_state = initial_state.split('').map.with_index do |plant, i|
-    plant == '#' ? i : nil
+  initial_state = initial_state.split("").map.with_index do |plant, i|
+    plant == "#" ? i : nil
   end.compact.to_set
 
   patterns = file.each_with_object({}) do |line, hash|

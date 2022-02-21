@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Node = Struct.new(:marble, :prev, :next)
 
 def insert_after(node, marble)
@@ -33,7 +35,7 @@ def play(num_players, last_marble)
   scores.max
 end
 
-File.open(File.join(__dir__, 'input.txt')) do |file|
+File.open(File.join(__dir__, "input.txt")) do |file|
   input = file.readline
   num_players = /(\d+) players/.match(input)[1].to_i
   last_marble = /(\d+) points/.match(input)[1].to_i
