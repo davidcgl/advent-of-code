@@ -32,8 +32,8 @@ def part_two(path)
   source = File.read(path).split(",").map(&:to_i)
   target = 19_690_720
 
-  (0..99).each do |noun|
-    (0..99).each do |verb|
+  100.times do |noun|
+    100.times do |verb|
       program = source.clone
       program[1] = noun
       program[2] = verb

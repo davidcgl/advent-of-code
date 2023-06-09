@@ -9,7 +9,7 @@ def each_cell(bounding_box)
   Enumerator.new do |enum|
     (min_x..max_x).map do |x|
       (min_y..max_y).map do |y|
-        enum << { x:, y: }
+        enum << {x:, y:}
       end
     end
   end
@@ -23,20 +23,20 @@ end
 File.open(File.join(__dir__, "input.txt")) do |file|
   anchors = file.each.map do |line|
     x, y = /(\d+), (\d+)/.match(line).captures.map(&:to_i)
-    { x:, y: }
+    {x:, y:}
   end
 
   bounding_box = [
     anchors.min_by { |a| a[:x] }[:x],
     anchors.max_by { |a| a[:x] }[:x],
     anchors.min_by { |a| a[:y] }[:y],
-    anchors.max_by { |a| a[:y] }[:y],
+    anchors.max_by { |a| a[:y] }[:y]
   ]
 
   closest = each_cell(bounding_box).group_by do |cell|
     candidates = anchors.group_by { |a| distance(a, cell) }.min[1]
     # If >1 anchors have the same distance to cell, it should not be counted.
-    candidates.size == 1 ? candidates.first : nil
+    (candidates.size == 1) ? candidates.first : nil
   end
 
   # What is the size of the largest area that isn't infinite?

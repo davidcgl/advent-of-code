@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "set"
-
 class Reservoir
   def initialize(clays, spring = [500, 0])
     @clays = clays
@@ -102,7 +100,7 @@ File.open(File.join(__dir__, filename)) do |file|
   clays = file.each_with_object(Set.new) do |line, set|
     a, b1, b2 = line.scan(/\d+/).map(&:to_i)
     (b1..b2).each do |b|
-      set << (line[0] == "x" ? [a, b] : [b, a])
+      set << ((line[0] == "x") ? [a, b] : [b, a])
     end
   end
 

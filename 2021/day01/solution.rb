@@ -2,12 +2,12 @@
 
 def part_one(path)
   lines = File.readlines(path).map(&:to_i)
-  lines.each_cons(2).sum { |prev, curr| prev < curr ? 1 : 0 }
+  lines.each_cons(2).sum { |prev, curr| (prev < curr) ? 1 : 0 }
 end
 
 def part_two(path)
   lines = File.readlines(path).map(&:to_i)
-  lines.each_cons(3).map(&:sum).each_cons(2).sum { |prev, curr| prev < curr ? 1 : 0 }
+  lines.each_cons(3).map(&:sum).each_cons(2).sum { |prev, curr| (prev < curr) ? 1 : 0 }
 end
 
 path = File.join(__dir__, ARGV[0] || "input.txt")

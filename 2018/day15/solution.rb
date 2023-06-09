@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "algorithms"
-require "set"
 
 class Game
   def initialize(lines, elf_damage)
@@ -18,7 +17,7 @@ class Game
           @grid[pos] = char
         when "E", "G"
           @grid[pos] = "."
-          damage = char == "E" ? elf_damage : 3
+          damage = (char == "E") ? elf_damage : 3
           @units << Unit.new(type: char, pos:, damage:)
         end
       end
@@ -71,7 +70,7 @@ class Game
   # Returns an adjacent enemy with the lowest HP and in reading order.
   def find_adjacent_enemy(unit)
     neighbors(unit.pos)
-      .map    { |p| @units.find { |u| u.pos == p } }
+      .map { |p| @units.find { |u| u.pos == p } }
       .select { |u| u&.alive? && u.type != unit.type }
       .min_by { |u| [u.hp, u.pos] }
   end
@@ -79,9 +78,9 @@ class Game
   # Returns all unoccupied cells adjacent to any enemy units.
   def find_destinations(unit)
     @units
-      .select   { |u| u.alive? && u.type != unit.type }
+      .select { |u| u.alive? && u.type != unit.type }
       .flat_map { |u| neighbors(u.pos).to_a }
-      .reject   { |p| occupied?(p) }
+      .reject { |p| occupied?(p) }
   end
 
   # Returns the shortest path from src to one of the destinations. If there are

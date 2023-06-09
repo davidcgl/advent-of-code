@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "set"
-
 def checksum(boxes)
   two_same_letters = 0
   three_same_letters = 0

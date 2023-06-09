@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require "pp"
 require "pry"
-require "set"
 
 def dep_graph(instructions)
   steps = "A".."Z"
@@ -62,7 +60,7 @@ def get_duration(instructions)
 end
 
 def make_job(step)
-  { step:, remaining: 61 + (step.ord - "A".ord) }
+  {step:, remaining: 61 + (step.ord - "A".ord)}
 end
 
 def schedule_jobs(job_queue, job_progress, max_concurrent_jobs = 5)

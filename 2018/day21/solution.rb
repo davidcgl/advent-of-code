@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "set"
-
 def solve(limit:)
   seen = Set.new
   first = nil

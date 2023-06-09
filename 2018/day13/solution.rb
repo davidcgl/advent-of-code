@@ -16,7 +16,7 @@ def solve(grid, carts)
     "^" => [-1, 0],
     "v" => [1, 0],
     "<" => [0, -1],
-    ">" => [0, 1],
+    ">" => [0, 1]
   }
 
   # For each direction, how to turn left, straight, and right.
@@ -24,12 +24,12 @@ def solve(grid, carts)
     "^" => ["<", "^", ">"],
     "v" => [">", "v", "<"],
     "<" => ["v", "<", "^"],
-    ">" => ["^", ">", "v"],
+    ">" => ["^", ">", "v"]
   }
 
   # How to turn at a forward slash (/) and backslash (\).
-  fturns = { "^" => ">", "v" => "<", "<" => "v", ">" => "^" }
-  bturns = { "^" => "<", "v" => ">", "<" => "^", ">" => "v" }
+  fturns = {"^" => ">", "v" => "<", "<" => "v", ">" => "^"}
+  bturns = {"^" => "<", "v" => ">", "<" => "^", ">" => "v"}
 
   # [y, x] coordinate of the first crash.
   first_crash = nil
@@ -55,7 +55,7 @@ def solve(grid, carts)
 
       new_pos = [
         pos[0] + directions[cart[:dir]][0],
-        pos[1] + directions[cart[:dir]][1],
+        pos[1] + directions[cart[:dir]][1]
       ]
 
       # Will there be a crash?
@@ -82,7 +82,7 @@ File.open(File.join(__dir__, "input.txt")) do |file|
     line.rstrip.each_char.with_index do |char, x|
       pos = [y, x]
       if ["^", "v", "<", ">"].include?(char)
-        carts[pos] = { dir: char, turn: [0, 1, 2].cycle }
+        carts[pos] = {dir: char, turn: [0, 1, 2].cycle}
         grid[pos] = ["^", "v"].include?(char) ? "|" : "-"
       else
         grid[pos] = char

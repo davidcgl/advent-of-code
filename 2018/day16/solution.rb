@@ -19,15 +19,15 @@ OPCODES = {
   gtrr: ->(s, i) { s[i[3]] = gt(s[i[1]], s[i[2]]) },
   eqir: ->(s, i) { s[i[3]] = eq(i[1], s[i[2]]) },
   eqri: ->(s, i) { s[i[3]] = eq(s[i[1]], i[2]) },
-  eqrr: ->(s, i) { s[i[3]] = eq(s[i[1]], s[i[2]]) },
+  eqrr: ->(s, i) { s[i[3]] = eq(s[i[1]], s[i[2]]) }
 }.freeze
 
 def gt(a, b)
-  a > b ? 1 : 0
+  (a > b) ? 1 : 0
 end
 
 def eq(a, b)
-  a == b ? 1 : 0
+  (a == b) ? 1 : 0
 end
 
 def apply(op, state, instr)
@@ -45,7 +45,7 @@ def read_samples(path)
     {
       old: RE_STATE.match(slice[0]).captures.map(&:to_i),
       ins: RE_INSTR.match(slice[1]).captures.map(&:to_i),
-      new: RE_STATE.match(slice[2]).captures.map(&:to_i),
+      new: RE_STATE.match(slice[2]).captures.map(&:to_i)
     }
   end
 end

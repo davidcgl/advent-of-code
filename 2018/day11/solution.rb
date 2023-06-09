@@ -45,7 +45,7 @@ def find_max_power(sum_table, square_size)
       max_coordinate = [x, y]
     end
   end
-  { coordinate: max_coordinate, power: max_power }
+  {coordinate: max_coordinate, power: max_power}
 end
 
 def chronal_charge

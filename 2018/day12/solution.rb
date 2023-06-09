@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "set"
-
 def mutate(state, patterns)
   new_state = Set.new
   min = state.min - 3
@@ -23,7 +21,7 @@ File.open(File.join(__dir__, "input.txt")) do |file|
   # Store indexes of plants that are alive.
   initial_state = file.readline.match(/initial state: (.*)/)[1]
   initial_state = initial_state.split("").map.with_index do |plant, i|
-    plant == "#" ? i : nil
+    (plant == "#") ? i : nil
   end.compact.to_set
 
   patterns = file.each_with_object({}) do |line, hash|

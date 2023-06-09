@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "set"
-
 class Landscape
   def initialize(path)
     @trees = Set.new
@@ -56,7 +54,7 @@ class Landscape
     adj_trees = @trees.each_with_object(Hash.new(0)) do |tree, hash|
       adjacent(tree)
         .reject { |adj| @trees.include?(adj) || @yards.include?(adj) }
-        .each   { |adj| hash[adj] += 1 }
+        .each { |adj| hash[adj] += 1 }
     end
     Set.new(adj_trees.select { |_, count| count >= 3 }.keys)
   end

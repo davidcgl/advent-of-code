@@ -16,15 +16,15 @@ OPCODES = {
   gtrr: ->(r, i) { gt(r[i[1]], r[i[2]]) },
   eqir: ->(r, i) { eq(i[1], r[i[2]]) },
   eqri: ->(r, i) { eq(r[i[1]], i[2]) },
-  eqrr: ->(r, i) { eq(r[i[1]], r[i[2]]) },
+  eqrr: ->(r, i) { eq(r[i[1]], r[i[2]]) }
 }.freeze
 
 def gt(a, b)
-  a > b ? 1 : 0
+  (a > b) ? 1 : 0
 end
 
 def eq(a, b)
-  a == b ? 1 : 0
+  (a == b) ? 1 : 0
 end
 
 def apply(registers, instruction)

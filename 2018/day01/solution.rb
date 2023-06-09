@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "set"
-
 def first_duplicate_frequency(changes)
   frequency = 0
   seen = Set.new
