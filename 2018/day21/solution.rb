@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def solve(limit:)
   seen = Set.new
   first = nil

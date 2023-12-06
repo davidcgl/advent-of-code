@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def plot(scores, e1, e2)
   out = scores.each_char.map { |c| " #{c} " }
   out[e1] = "(#{scores[e1]})"

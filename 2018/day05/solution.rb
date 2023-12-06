@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def react?(a, b)
   (a != b) && (a == b.downcase || a == b.upcase)
 end

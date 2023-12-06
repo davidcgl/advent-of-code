@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def part_one(path)
   File.foreach(path).sum do |mass|
     (mass.to_i / 3) - 2

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Node = Struct.new(:marble, :prev, :next)
 
 def insert_after(node, marble)

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 RE_STATE = /(\d), (\d), (\d), (\d)/
 RE_INSTR = /(\d+) (\d) (\d) (\d)/
 

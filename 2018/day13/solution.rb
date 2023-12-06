@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def plot(grid, carts)
   out = ""
   grid.keys.group_by(&:first).values.each_with_index do |cells, i|

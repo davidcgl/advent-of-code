@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def sum_metadata(tokens)
   return if tokens.empty?
 

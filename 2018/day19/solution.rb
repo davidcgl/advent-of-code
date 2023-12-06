@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 OPCODES = {
   addr: ->(r, i) { r[i[1]] + r[i[2]] },
   addi: ->(r, i) { r[i[1]] + i[2] },
@@ -71,8 +69,7 @@ def solve
   # The program initializes a target value and then find the sum of its factors.
   # However, the sum-of-factors algorithm is inefficient (O(n^2)). Therefore, we
   # extract the target value and calculate sum-of-factors ourselves.
-  #
-  # Program details:
+    # Program details:
   #   Instruction 0 jumps to instruction 17
   #   Instructions 1-16 calculate the target's sum of factors
   #   Instructions 17-39 calculate the target and storer it in register 2

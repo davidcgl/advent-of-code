@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def distance(a, b)
   (a[:x] - b[:x]).abs + (a[:y] - b[:y]).abs
 end

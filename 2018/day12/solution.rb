@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def mutate(state, patterns)
   new_state = Set.new
   min = state.min - 3

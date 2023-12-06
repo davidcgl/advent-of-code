@@ -1,11 +1,6 @@
-# frozen_string_literal: true
-
 # Parse game description like this
-#
 #   "Game 4: 3 red, 4 green; 5 red, 1 blue; 2 green; 3 green, 1 blue; 2 green, 1 blue, 1 red"
-#
 # into this
-#
 #   {
 #     id: "4",
 #     combos: [

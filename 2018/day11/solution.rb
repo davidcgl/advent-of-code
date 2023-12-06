@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 GRID_SIZE = 301
 SERIAL = 7347
 

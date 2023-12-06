@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def part_one(path)
   depth = 0
   width = 0

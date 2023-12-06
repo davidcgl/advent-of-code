@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def parse_grid(path)
   File.readlines(path, chomp: true).map(&:chars)
 end

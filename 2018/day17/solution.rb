@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Reservoir
   def initialize(clays, spring = [500, 0])
     @clays = clays

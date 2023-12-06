@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Landscape
   def initialize(path)
     @trees = Set.new

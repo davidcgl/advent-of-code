@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Represents a bounding box.
 Box = Struct.new(:id, :x, :y, :width, :height) do
   def self.from_line(line)

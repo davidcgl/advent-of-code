@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def checksum(boxes)
   two_same_letters = 0
   three_same_letters = 0

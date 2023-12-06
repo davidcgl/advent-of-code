@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def move(stars, velos, tick)
   stars.map.with_index do |(x, y), i|
     new_x = x + tick * velos[i][0]

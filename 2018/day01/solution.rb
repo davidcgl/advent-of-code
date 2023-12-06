@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def first_duplicate_frequency(changes)
   frequency = 0
   seen = Set.new

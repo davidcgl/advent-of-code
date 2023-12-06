@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def parse_part_one(path)
   lines = File.readlines(path)
   times = lines[0].scan(/\d+/).map(&:to_i)
@@ -16,28 +14,21 @@ end
 
 def count_ways_to_win(race)
   # Let:
-  #
-  #   T = total time
+    #   T = total time
   #   D = distance to win
   #   x = holding time = speed
-  #
-  # Therefore:
-  #
-  #      traveling time = total time - holding time = T - x
+    # Therefore:
+    #      traveling time = total time - holding time = T - x
   #   distance traveled = traveling time * speed = (T - x) * x
-  #
-  # We want to find all values of x where:
-  #
-  #   distance traveled > distance to win
+    # We want to find all values of x where:
+    #   distance traveled > distance to win
   #         (T - x) * x > D
   #         Tx + (-x^2) > D
   #     Tx + (-x^2) - D > 0
   #     -(x^2) + Tx - D > 0
-  #
-  # The LHS is a quadratic function ax^2 + bx + c, where a = -1, b = T, c = -D. Therefore we can use
+    # The LHS is a quadratic function ax^2 + bx + c, where a = -1, b = T, c = -D. Therefore we can use
   # the quadratic formula to find two roots x1 and x2 that satisfies the equation.
-  #
-  # Since this function creates a parabola (U-shaped curve), all values of x between x1 and x2 must
+    # Since this function creates a parabola (U-shaped curve), all values of x between x1 and x2 must
   # give us a value greater than 0. Therefore all integers between x1 and x2 are valid holding times
   # that satisfies distance traveled > distance to win.
 

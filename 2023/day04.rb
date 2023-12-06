@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def parse_card(line)
   match_data = line.match(/Card\W+(\d+):/)
   card_id = match_data[1]

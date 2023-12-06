@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def part_one(path)
   lines = File.readlines(path).map(&:to_i)
   lines.each_cons(2).sum { |prev, curr| (prev < curr) ? 1 : 0 }
